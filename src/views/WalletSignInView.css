@@ -1,0 +1,46 @@
+.wallet-main-container {
+    height: 100vh;
+    padding: 20px; /* adjust as necessary */
+    color: white;
+    background-color: #1E1E20;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Figtree Regular', sans-serif;
+}
+
+.back-arrow {
+    font-size: 2rem; /* adjust as necessary */
+    margin-bottom: 10px;
+    cursor: pointer; /* makes the back arrow look clickable */
+    color: white;
+}
+
+.wallet-main-header {
+    font-size: 2rem; /* adjust as necessary */
+    margin-bottom: 5%;
+    margin-top: 10%;
+    font-family: 'Figtree SemiBold', sans-serif;
+}
+
+.wallet-sub-header {
+    font-size: 1rem; /* adjust as necessary */
+}
+
+.wallet-bottom-text {
+    margin-top: auto;
+    margin-bottom: 5%;
+    text-align: center;
+    font-family: 'Figtree Regular', sans-serif;
+}
+
+.terms-link {
+    color: #0AE194; /* Adjust this color if needed */
+    text-decoration: none; /* To remove the underline */
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+        color: #007B63; /* A slightly darker shade of green for hover effect. Adjust if needed */
+    }
+}

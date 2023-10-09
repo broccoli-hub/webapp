@@ -1,0 +1,56 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: white;
+    font-family: 'Figtree Regular', sans-serif;
+    position: relative;
+    padding-top: 50%;
+}
+
+.logo {
+    font-size: 24px;
+    margin: 30px 0 50px 30px; /* Add some margin to position it nicely on the top-left */
+    align-self: flex-start; /* Align to the start of the main axis of the container */
+    display: flex; /* To line up the icon and text next to each other */
+    align-items: center; /* Vertically center the text and the icon */
+    position: absolute; /* Use absolute positioning */
+    top: 20px; /* Adjust as needed to set distance from the top */
+}
+
+
+.header-text {
+    font-size: 4rem;
+    text-align: left; /* Align text to the left */
+    width: 60%; /* Adjust as needed to control where the text wraps */
+    margin-left: -25%;
+    margin-bottom: 50px;
+    font-family: 'Figtree ExtraBold', sans-serif;
+    line-height: 0.85;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    height: 100vh;
+}
+
+.footer-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Figtree Regular', sans-serif;
+}
+
+.buttons-container {
+    position: absolute; /* Use absolute positioning */
+    bottom: 20px; /* Adjust as needed to set distance from the bottom */
+    width: 100%; /* Span the full width of the parent container */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the buttons horizontally */
+}
+
+.automatic-registration-text {
+    margin-top: 10px;
+    bottom: 20px;
+    text-align: center;
+}
