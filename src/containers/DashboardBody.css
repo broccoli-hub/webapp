@@ -1,0 +1,25 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    background-color: #1E1E20;
+    padding: 1em;
+    color: #F8F7F2;
+}
+
+h2 {
+    font-family: 'Figtree SemiBold', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 95%;
+}
+
+.device-label {
+    color: #F8F7F2;
+    font-family: 'Figtree Regular', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 95%;
+    margin-bottom: 20px;
+}

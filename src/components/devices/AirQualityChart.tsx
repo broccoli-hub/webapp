@@ -39,9 +39,9 @@ interface AirQualityChartData {
 
 const AirQualityChart: React.FC<AirQualityChartData> = ({ data }) => {
   const getGradient = (ctx: any) => {
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400); // Adjust based on your canvas height
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, '#0AE194');
-    gradient.addColorStop(1, 'rgba(10, 225, 148, 0)'); // this will make it fade to transparent
+    gradient.addColorStop(1, 'rgba(10, 225, 148, 0)');
     return gradient;
   }
 
