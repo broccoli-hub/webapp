@@ -38,6 +38,14 @@ interface AirQualityChartData {
 }
 
 const AirQualityChart: React.FC<AirQualityChartData> = ({ data }) => {
+  const getGradient = (ctx: any) => {
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400); // Adjust based on your canvas height
+    gradient.addColorStop(0, '#0AE194');
+    gradient.addColorStop(1, 'rgba(10, 225, 148, 0)'); // this will make it fade to transparent
+    return gradient;
+  }
+
+
   const chartData = useMemo(() => {
     const labels = data.map(entry => new Date(entry.dateObserved.value).getTime());
     const co2Data = data.map(entry => entry.co2.value);
@@ -46,21 +54,19 @@ const AirQualityChart: React.FC<AirQualityChartData> = ({ data }) => {
       labels,
       datasets: [
         {
-          label: 'CO2 (ppm)',
+          label: 'CO2',
           data: co2Data,
-          borderColor: 'red',
-          fill: false,
+          borderColor: '#0AE194',
+          bodyColor: '#0AE194',
+          backgroundColor: (context: any) => {
+            const ctx = context.chart.ctx;
+            return getGradient(ctx);
+          },
+          fill: true,
         }
       ]
     };
   }, [data]);
-
-  const gradientFill = (ctx: any) => {
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
-    gradient.addColorStop(1, 'rgba(0, 255, 0, 0.6)');
-    return gradient;
-  };
 
   const options: ChartOptions<"line"> = {
     scales: {
@@ -95,7 +101,7 @@ const AirQualityChart: React.FC<AirQualityChartData> = ({ data }) => {
         },
         title: {
           display: true,
-          text: 'CO2 (ppm)',
+          text: 'co2',
           color: 'white'
         }
       }
@@ -112,24 +118,24 @@ const AirQualityChart: React.FC<AirQualityChartData> = ({ data }) => {
     },
     elements: {
       line: {
-        tension: 0.4,
-        borderColor: 'white',
+        tension: 0.3,
+        borderColor: '#0AE194',
         borderWidth: 2,
         fill: true,
         backgroundColor: function (context) {
           const ctx = context.chart.ctx;
-          return gradientFill(ctx);
+          return getGradient(ctx);
         },
       },
       point: {
-        backgroundColor: 'white',
-        hoverBackgroundColor: 'white',
-        borderColor: 'white',
-        hoverBorderColor: 'white',
+        backgroundColor: '#FAFAFA',
+        hoverBackgroundColor: '#FAFAFA',
+        borderColor: '#1E1E20',
+        hoverBorderColor: '#1E1E20',
         borderWidth: 2,
-        hoverRadius: 7,
-        radius: 5
-      }
+        hoverRadius: 5,
+        radius: 2
+      },
     },
     maintainAspectRatio: false,
     responsive: true,
