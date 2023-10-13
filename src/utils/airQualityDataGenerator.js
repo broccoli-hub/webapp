@@ -44,7 +44,7 @@ const generateMockData = () => {
         }]
     };
 
-    for (let i = 0; i < 240; i = i + 10) {
+    for (let i = 0; i < 240; i = i + 15) {
         const hourAgo = new Date(currentDate);
         hourAgo.setMinutes(currentDate.getMinutes() - i);
 
