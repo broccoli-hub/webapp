@@ -1,0 +1,59 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    background-color: #1E1E20;
+    padding: 1em;
+    color: #F8F7F2;
+}
+
+h1 {
+    font-family: 'Figtree SemiBold', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 95%;
+    /* 19px */
+}
+
+.staking-container {
+    background: #0AE194;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 4px;
+    gap: 10px;
+    border-radius: 16px;
+}
+
+.staking-number {
+    color: #1E1E20;
+    align-self: center;
+    font-family: 'Figtree Regular', sans-serif;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 95%;
+    letter-spacing: 0.05em;
+}
+
+.staking-balance-label {
+    color: #F8F7F2;
+    font-family: 'Figtree Regular', sans-serif;
+    font-size: 18px;
+}
+
+.staking-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 0.5em;
+}
+
+.staking-balance {
+    margin-top: 9px;
+    font-family: 'Figtree SemiBold', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 95%;
+}
