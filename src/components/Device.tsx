@@ -23,7 +23,7 @@ const DeviceComponent: React.FC<DeviceComponentsProps> = (props: DeviceComponent
     const innerNodes = props.children;
 
     return (
-        <div className='device-box' style={props.options?.isSingle ? { width: '48%', gap: '1rem' } : {}}>
+        <div className='device-box' style={props.options?.isSingle ? { width: '49%' } : {}}>
             {!props.options.isSwitch &&
                 <div className='device-info'>
                     <span className='device-name'>{deviceName}</span>
