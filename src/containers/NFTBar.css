@@ -1,0 +1,27 @@
+.segmented-control {
+    display: flex;
+    overflow: hidden;
+}
+
+.segment {
+    flex: 1;
+    padding: 10px 20px;
+    color: #F8F7F2;
+    background-color: #1E1E20;
+    border-bottom: 1px solid #404346;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.segment:hover {
+    color: #0AE194;
+}
+
+.segment.active {
+    background-color: #1E1E20;
+    color: #0AE194;
+    border-bottom: 1px solid #0AE194;
+}
