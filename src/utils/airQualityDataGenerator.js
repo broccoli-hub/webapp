@@ -2,14 +2,22 @@ import { useState, useEffect } from 'react';
 
 const API_URL = "https://n920cg6a1m.execute-api.us-west-2.amazonaws.com/iot/things/IndoorEnvironment-AM103-24e124725c146797";
 
+let ENDPOINT_DATA_TMP = {}
 
 export const fetchDataAndGenerateVariations = async () => {
     try {
       const response = await fetch(API_URL);
-      const apiData = await response.json();
 
-      const generatedData = generateDataVariations(apiData);
-      return generatedData;
+      if (!ENDPOINT_DATA_TMP.thingName) {
+        ENDPOINT_DATA_TMP = await response.json();  
+      } else {
+        const newResponse = await response.json()
+        const dataToAdd = newResponse?.entities?.find((entity) => entity.type === 'IndoorEnvironmentObserved');
+        ENDPOINT_DATA_TMP.entities.push(dataToAdd);
+      }
+
+    //   const generatedData = generateDataVariations(apiData);
+      return ENDPOINT_DATA_TMP;
     } catch (error) {
       console.error("Error fetching the API:", error);
     }

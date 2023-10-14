@@ -37,13 +37,13 @@ const AirQualityAnalyzer: React.FC<AirQualityAnalyzerProps> = ({ reportCallToAct
             reportCallToAction('Turn on Air Acconditioner');
         }
 
-        setData(endpointData);
+        setData({ ...endpointData });
         setLoading(false);
     };
 
     useEffect(() => {
         fetchData();
-        const refreshInterval = setInterval(fetchData, 15000);
+        const refreshInterval = setInterval(fetchData, 60000);
         return () => clearInterval(refreshInterval);
     }, []);
 

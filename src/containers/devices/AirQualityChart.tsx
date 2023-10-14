@@ -72,9 +72,9 @@ const AirQualityChart: React.FC<AirQualityChartData> = ({ data }) => {
       x: {
         type: 'time',
         time: {
-          unit: 'hour',
+          unit: 'second',
           displayFormats: {
-            hour: 'HH'
+            hour: 'SS'
           }
         },
         grid: {
