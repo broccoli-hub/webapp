@@ -16,10 +16,15 @@ h2 {
 
 .device-label {
     color: #F8F7F2;
-    font-family: 'Figtree Regular', sans-serif;
+    font-family: 'Figtree SemiBold', sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: 95%;
     margin-bottom: 20px;
+}
+
+.two-devices-wrapper {
+    display: flex;
+    gap: 1rem; 
 }
