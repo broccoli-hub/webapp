@@ -43,3 +43,38 @@
     background-color: #1E1E20;
     color: #F8F7F2;
 }
+
+.nft-container {
+    width: 100%;
+    background: #1E1E20;
+    overflow: hidden;
+    color: #FAFAFA;
+}
+
+.nft-info {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+
+.nft-info h3 {
+    font-family: 'Figtree SemiBold', sans-serif;
+    font-size: 18px;
+    line-height: 95%;
+}
+
+.nft-info p {
+    font-family: 'Figtree Regular', sans-serif;
+    font-size: 14px;
+}
+
+.nft-image {
+    width: 91px;
+    height: 91px;
+    margin-right: 15px;
+}
+
+.nft-details {
+    display: flex;
+    flex-direction: column;
+}
