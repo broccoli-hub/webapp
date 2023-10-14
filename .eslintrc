@@ -4,8 +4,8 @@
     "extends": [
       "plugin:@typescript-eslint/recommended"
     ],
-    "rules": [
-      "@typescript-eslint/no-explicit-any"
-    ]
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off"
+    }
   }
   
