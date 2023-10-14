@@ -1,0 +1,37 @@
+.no-devices-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;  
+    height: 100%; 
+}
+
+.device-icon {
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -50px;
+}
+
+.no-devices-text {
+    margin: 20px 0;
+    color: white;
+    font-size: 18px;
+    font-family: 'Figtree SemiBold', sans-serif;
+}
+
+.add-device-btn {
+    color: #0AE194;
+    background-color: #1E1E20;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    font-family: 'Figtree SemiBold', sans-serif;
+}
