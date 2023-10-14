@@ -2,6 +2,19 @@ import { useState, useEffect } from 'react';
 
 const API_URL = "https://n920cg6a1m.execute-api.us-west-2.amazonaws.com/iot/things/IndoorEnvironment-AM103-24e124725c146797";
 
+
+export const fetchDataAndGenerateVariations = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const apiData = await response.json();
+
+      const generatedData = generateDataVariations(apiData);
+      return generatedData;
+    } catch (error) {
+      console.error("Error fetching the API:", error);
+    }
+  };
+
 export const useGeneratedData = () => {
   const [data, setData] = useState(null);
 

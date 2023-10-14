@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import AirQualityChart from './AirQualityChart';
 import DeviceData from '../../components/DeviceData';
-import { useGeneratedData } from '../../utils/airQualityDataGenerator'
+import { fetchDataAndGenerateVariations } from '../../utils/airQualityDataGenerator'
 import BroccoliLoading from '../../components/Loading';
 
 import './AirQualityAnalyzer.css'
@@ -11,54 +11,43 @@ interface AirQualityAnalyzerProps {
     reportCallToAction: (message: string) => void;
 }
 
+interface Entity {
+    type: string;
+    temperature: any; //{ value: number };
+    co2: any;//{ value: number };
+    dateObserved: any; //{ value: string | undefined };
+}
+
+interface EndpointData {
+    entities: Entity[];
+    // ... other properties
+}
+
 const AirQualityAnalyzer: React.FC<AirQualityAnalyzerProps> = ({ reportCallToAction }) => {
-    const [data, setData] = useState<any>({});
+    const [data, setData] = useState<EndpointData | null>(null);
     const [loading, setLoading] = useState(true);
-    const endpointData = useGeneratedData();
 
-    // useEffect(() => {
-    //     // TODO: prevent fake loading
-    //     const loadingTimeout = setTimeout(() => {
-    //         setData(endpointData);
-    //         setLoading(false);
-    //     }, 1500);
-
-    //     return () => clearTimeout(loadingTimeout);
-    // }, [endpointData]);
-
-    const fetchData = () => {
-        // TODO: prevent fake loading
+    const fetchData = async () => {
         console.log('Fetching data');
-        const loadingTimeout = setTimeout(() => {
-            setData(endpointData);
+        const endpointData: any = await fetchDataAndGenerateVariations();
+        
+        const environmentData = endpointData?.entities?.find((entity: any) => entity.type === 'IndoorEnvironmentObserved');
+        const temperature = environmentData?.temperature?.value;
+        if (temperature > 10) {
+            reportCallToAction('Turn on Air Acconditioner');
+        }
 
-            const environmentData = data?.entities?.find((entity: any) => entity.type === 'IndoorEnvironmentObserved');
-
-            const temperature = environmentData?.temperature?.value;
-            
-            if (temperature > 10) {
-                reportCallToAction('Turn on Air Acconditioner');
-            }
-
-            setLoading(false);
-        }, 1500);
-
-        // Cleanup timer
-        return () => clearTimeout(loadingTimeout);
+        setData(endpointData);
+        setLoading(false);
     };
 
     useEffect(() => {
         fetchData();
-
-        // Set interval to fetch data every 15 seconds
         const refreshInterval = setInterval(fetchData, 15000);
-
-        // Cleanup interval
         return () => clearInterval(refreshInterval);
-    }, [endpointData]);
+    }, []);
 
     const environmentData = data?.entities?.find((entity: any) => entity.type === 'IndoorEnvironmentObserved');
-
     const temperature = environmentData?.temperature?.value;
     const co2 = environmentData?.co2?.value;
 
