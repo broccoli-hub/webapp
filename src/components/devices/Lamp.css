@@ -1,0 +1,52 @@
+.lamp-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: #27282B;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+.lamp-icon, .lamp-info {
+    align-self: flex-start;
+    margin-left: 0.5rem;
+}
+
+.lamp-icon {
+    margin-bottom: 1rem;
+    margin-left: -0.01rem;
+}
+
+.lamp-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+.lamp-device-name {
+    color: #FAFAFA;
+    font-size: 1rem;
+    font-family: 'Figtree SemiBold', sans-serif;
+    margin-left: -0.25rem;
+}
+
+.lamp-label {
+    color: #FAFAFA;
+    font-size: 0.75rem;
+    font-family: 'Figtree Regular', sans-serif;
+    margin-left: -0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.lamp-status {
+    color: #FAFAFA;
+    font-family: 'Figtree Regular', sans-serif;
+    font-size: 0.875rem;
+}
+
+.lamp-switch {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.3125rem;
+}
