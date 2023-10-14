@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import AirQualityChart from './AirQualityChart';
-import DeviceData from '../DeviceData';
-import { generateMockData } from './../../utils/airQualityDataGenerator'
+import DeviceData from '../../components/DeviceData';
+import { generateMockData } from '../../utils/airQualityDataGenerator'
 
 import './AirQualityAnalyzer.css'
 
