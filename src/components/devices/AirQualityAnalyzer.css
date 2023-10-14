@@ -1,71 +1,22 @@
-.air-quality-component {
-    background-color: #27282B;
-    color: #FAFAFA;
-    border-radius: 16px;
-    border: 1px solid #404346;
-    padding: 15px;
-    flex-shrink: 0;
-    box-shadow: 0px 4px 8px 0px rgba(30, 30, 32, 0.15);
-}
-
-.device-header {
-    font-family: 'Figtree SemiBold', sans-serif;
-    font-size: 16px;
-}
-
-.data-container {
+.air-data {
     display: flex;
     justify-content: space-between;
 }
 
-.chart-container {
+.air-real-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1em;
+    gap: 2rem;
+}
+
+.air-chart {
     width: 65%; 
-    height: 200px;
-    padding: 10px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.625rem;
 }
 
 .chart-container canvas {
     width: 100% !important;
     height: 100% !important;
-}
-
-.temperature-box {
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
-}
-
-.temperature-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.temperature-icon {
-    margin-right: 8px;
-}
-
-.temperature-value {
-    font-size: 16px;
-    font-family: 'Figtree Regular', sans-serif;
-    margin-right: 4px;
-}
-
-.temperature-label {
-    font-family: 'Figtree Regular', sans-serif;
-    font-size: 12px;
-    color: lightgrey;
-    margin-top: 1px;
-}
-
-.boxes-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 30%;
-    margin-right: 5%;
-    margin-top: 1em;
-    gap: 20px;
 }

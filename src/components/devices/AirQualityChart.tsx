@@ -45,7 +45,6 @@ const AirQualityChart: React.FC<AirQualityChartData> = ({ data }) => {
     return gradient;
   }
 
-
   const chartData = useMemo(() => {
     const labels = data.map(entry => new Date(entry.dateObserved.value).getTime());
     const co2Data = data.map(entry => entry.co2.value);
