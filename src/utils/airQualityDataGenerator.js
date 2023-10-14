@@ -26,16 +26,20 @@ export const useGeneratedData = () => {
 };
 
 const generateDataVariations = (apiData) => {
+    const MAX_TEMPERATURE_FLUCTATION = 8;
+    const MAX_CO2_FLUCTATION = 20;
   const originalTemperature = apiData.entities[1].temperature.value;
   const originalCO2 = apiData.entities[1].co2.value;
   
   for (let i = 0; i < 5; i++) {
-    const temperatureFluctuation = Math.random() * 2 - 1; // Random value between -1 and 1
-    const co2Fluctuation = Math.random() * 20 - 10; // Random value between -10 and 10
+    const temperatureIncrease = Math.random() * 10; // Random value between 0 and 1
+    const co2Increase = Math.random() * 10; // Random value between 0 and 2
 
-    const newTemperature = originalTemperature + temperatureFluctuation;
-    const newCO2 = originalCO2 + co2Fluctuation;
+    const newTemperature = originalTemperature + Math.min(originalTemperature + temperatureIncrease, MAX_TEMPERATURE_FLUCTATION) + i;
+    const newCO2 = originalCO2 + Math.min(originalCO2 + co2Increase, MAX_CO2_FLUCTATION) + i * 2;
 
+    const date = new Date();
+    date.setHours(date.getHours() - i);
     const newEntry = {
       ...apiData.entities[1],
       id: `urn:ngsi-ld:IndoorEnvironmentObserved:IndoorEnvironment-AM103-24e124725c146797-variation${i}`,
@@ -49,7 +53,7 @@ const generateDataVariations = (apiData) => {
       },
       dateObserved: {
         type: "Property",
-        value: new Date().toISOString()
+        value: date.toISOString()
       }
     };
     apiData.entities.push(newEntry);
