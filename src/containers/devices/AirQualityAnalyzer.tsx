@@ -7,19 +7,54 @@ import BroccoliLoading from '../../components/Loading';
 
 import './AirQualityAnalyzer.css'
 
-const AirQualityAnalyzer: React.FC = () => {
-    const [data, setData] = useState<any>({});
-    const endpointData = useGeneratedData();
-    const [loading, setLoading] = useState(true);
+interface AirQualityAnalyzerProps {
+    reportCallToAction: (message: string) => void;
+}
 
-    useEffect(() => {
+const AirQualityAnalyzer: React.FC<AirQualityAnalyzerProps> = ({ reportCallToAction }) => {
+    const [data, setData] = useState<any>({});
+    const [loading, setLoading] = useState(true);
+    const endpointData = useGeneratedData();
+
+    // useEffect(() => {
+    //     // TODO: prevent fake loading
+    //     const loadingTimeout = setTimeout(() => {
+    //         setData(endpointData);
+    //         setLoading(false);
+    //     }, 1500);
+
+    //     return () => clearTimeout(loadingTimeout);
+    // }, [endpointData]);
+
+    const fetchData = () => {
         // TODO: prevent fake loading
+        console.log('Fetching data');
         const loadingTimeout = setTimeout(() => {
             setData(endpointData);
+
+            const environmentData = data?.entities?.find((entity: any) => entity.type === 'IndoorEnvironmentObserved');
+
+            const temperature = environmentData?.temperature?.value;
+            
+            if (temperature > 10) {
+                reportCallToAction('Turn on Air Acconditioner');
+            }
+
             setLoading(false);
         }, 1500);
 
+        // Cleanup timer
         return () => clearTimeout(loadingTimeout);
+    };
+
+    useEffect(() => {
+        fetchData();
+
+        // Set interval to fetch data every 15 seconds
+        const refreshInterval = setInterval(fetchData, 15000);
+
+        // Cleanup interval
+        return () => clearInterval(refreshInterval);
     }, [endpointData]);
 
     const environmentData = data?.entities?.find((entity: any) => entity.type === 'IndoorEnvironmentObserved');

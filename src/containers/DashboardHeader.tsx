@@ -12,11 +12,11 @@ const DashboardHeader = ({ name = 'John', earningPower = 1.21, totalBalance = 12
             <h1>Hi, {name}</h1>
             <div className="staking-wrapper">
                 <div className="staking-container">
-                    <div className="staking-number">{earningPower > 0 && '+'}{earningPower}%</div>
+                    <div className="staking-number">{earningPower} $BRC/day</div>
                 </div>
-                <span className='staking-balance-label'>BRC Total balance</span>
+                
             </div>
-            <div className='staking-balance'>${totalBalance}</div>
+            <div className='staking-balance'><img src="./images/coin-flat.png" alt="$BRC" className="currency-icon" />{totalBalance}</div>
         </div>
     );
 }

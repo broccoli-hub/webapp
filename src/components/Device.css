@@ -6,6 +6,7 @@
     padding: 0.9375rem;
     box-shadow: 0 0.25rem 0.5rem 0 rgba(30, 30, 32, 0.15);
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .device-name {
@@ -24,4 +25,29 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.device-top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.cta-button {
+    border: none;
+    font-family: 'Figtree SemiBold', sans-serif;
+    border-radius: 4px;
+    color: #0AE194;
+    background-color: #27282B;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-left: 2rem;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.cta-button:hover {
+    color: #0AE194;
 }

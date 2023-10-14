@@ -37,7 +37,7 @@ h1 {
 }
 
 .staking-balance-label {
-    color: #F8F7F2;
+    color: #1E1E20;
     font-family: 'Figtree Regular', sans-serif;
     font-size: 0.8rem;
 }
@@ -51,9 +51,17 @@ h1 {
 
 .staking-balance {
     margin-top: 9px;
-    font-family: 'Figtree SemiBold', sans-serif;
+    font-family: 'Figtree Regular', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 800;
     line-height: 95%;
+}
+
+.currency-icon {
+    width: 55px;           
+    height: auto;          
+    vertical-align: middle; 
+    margin-right: 5px;     
+    margin-bottom: 5px;
 }
