@@ -16,7 +16,9 @@ const Dashboard: React.FC = () => {
         <>
             <DashboardHeader earningPower={earningPower} name='John' totalBalance={213.757}/>
             <NFTBar onChange={(nft: number) => setCurrentNFT(nft)}/>
-            <DashboardBody adjustEarningPower={adjustEarningPower} currentNFT={currentNFT} />
+            <div className="scrollable-div ">
+                <DashboardBody adjustEarningPower={adjustEarningPower} currentNFT={currentNFT} />
+            </div>
         </>
     )
 }
