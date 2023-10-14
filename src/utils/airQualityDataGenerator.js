@@ -1,103 +1,59 @@
-const generateMockData = () => {
-    const baseTemperature = 17; // Base temperature in Celsius
-    const baseCO2 = 480; // Base CO2 in ppm
-    const currentDate = new Date();
+import { useState, useEffect } from 'react';
 
-    const data = {
-        thingName: "IndoorEnvironment-AM103-24e124725c146797",
-        entities: [{
-            type: "Device",
-            id: "urn:ngsi-ld:Device:IndoorEnvironment-AM103-24e124725c146797",
-            batteryLevel: {
-                type: "Property",
-                value: 87,
-                unitCode: "P1"
-            },
-            location: {
-                type: "GeoProperty",
-                value: {
-                    type: "Point",
-                    coordinates: [
-                        -34.449912,
-                        -58.920659
-                    ]
-                }
-            },
-            devicestate: {
-                type: "Property",
-                value: "active"
-            },
-            serialNumber: {
-                type: "Property",
-                value: "24e124725c146797"
-            },
-            name: {
-                type: "Property",
-                value: "IndoorEnvironment-AM103-24e124725c146797"
-            },
-            category: {
-                type: "Property",
-                value: [
-                    "sensor"
-                ]
-            }
-        }]
+const API_URL = "https://n920cg6a1m.execute-api.us-west-2.amazonaws.com/iot/things/IndoorEnvironment-AM103-24e124725c146797";
+
+export const useGeneratedData = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchDataAndGenerateVariations = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const apiData = await response.json();
+
+        const generatedData = generateDataVariations(apiData);
+        setData(generatedData);
+        console.log('API fetched: ', { apiData });
+      } catch (error) {
+        console.error("Error fetching the API:", error);
+      }
     };
 
-    for (let i = 0; i < 240; i = i + 15) {
-        const hourAgo = new Date(currentDate);
-        hourAgo.setMinutes(currentDate.getMinutes() - i);
+    fetchDataAndGenerateVariations();
+  }, []);
 
-        const temperatureFluctuation = Math.random() * 2 - 1; // Random value between -1 and 1
-        const co2Fluctuation = Math.random() * 20 - 10; // Random value between -10 and 10
+  return data;
+};
 
-        const temperature = baseTemperature + temperatureFluctuation;
-        const co2 = baseCO2 + co2Fluctuation;
+const generateDataVariations = (apiData) => {
+  const originalTemperature = apiData.entities[1].temperature.value;
+  const originalCO2 = apiData.entities[1].co2.value;
+  
+  for (let i = 0; i < 5; i++) {
+    const temperatureFluctuation = Math.random() * 2 - 1; // Random value between -1 and 1
+    const co2Fluctuation = Math.random() * 20 - 10; // Random value between -10 and 10
 
-        console.log({ timeSet: hourAgo.toISOString() })
-        console.log({ plainTime: hourAgo })
+    const newTemperature = originalTemperature + temperatureFluctuation;
+    const newCO2 = originalCO2 + co2Fluctuation;
 
-        const entry = {
-            type: "IndoorEnvironmentObserved",
-            id: `urn:ngsi-ld:IndoorEnvironmentObserved:IndoorEnvironment-AM103-24e124725c146797-${i}`,
-            dateObserved: {
-                type: "Property",
-                value: hourAgo.toISOString()
-            },
-            refDevice: {
-                type: "Relationship",
-                object: "urn:ngsi-ld:Device:IndoorEnvironment-AM103-24e124725c146797"
-            },
-            temperature: {
-                type: "Property",
-                value: temperature,
-                unitCode: "CEL"
-            },
-            relativeHumidity: {
-                type: "Property",
-                value: 45, // keeping this constant for simplicity
-                unitCode: "P1"
-            },
-            co2: {
-                type: "Property",
-                value: co2,
-                unitCode: "59"
-            },
-            location: {
-                type: "GeoProperty",
-                value: {
-                    type: "Point",
-                    coordinates: [
-                        -34.449912,
-                        -58.920659
-                    ]
-                }
-            }
-        };
-        data.entities.push(entry);
-    }
+    const newEntry = {
+      ...apiData.entities[1],
+      id: `urn:ngsi-ld:IndoorEnvironmentObserved:IndoorEnvironment-AM103-24e124725c146797-variation${i}`,
+      temperature: {
+        ...apiData.entities[1].temperature,
+        value: newTemperature,
+      },
+      co2: {
+        ...apiData.entities[1].co2,
+        value: newCO2,
+      },
+      dateObserved: {
+        type: "Property",
+        value: new Date().toISOString()
+      }
+    };
+    apiData.entities.push(newEntry);
+  }
 
-    return data;
-}
-
-export { generateMockData }
+  return apiData;
+};
