@@ -8,6 +8,7 @@ import { generateMockData } from '../utils/airQualityDataGenerator';
 
 import './DashboardBody.css';
 import AddDeviceComponent from './devices/AddDeviceComponent';
+import Navbar from '../components/NavBar';
 
 const DashboardBody: React.FC = () => {
     const [data, setData] = useState<any>({});
@@ -28,6 +29,7 @@ const DashboardBody: React.FC = () => {
                         {/* <DeviceComponent device={{ type: 'Light Switch' }} options={{ isSingle: true, isSwitch: true }}><Lamp customName='Custom Name' status='On'/></DeviceComponent> */}
                         <AddDeviceComponent />
                     </div>
+                    <Navbar/>
                 </>
             }
         </div>
