@@ -14,8 +14,9 @@ function NFTBar() {
         NFT name 1
       </button>
       <button
-        className={`segment ${selected === "NFT name 2" ? "active" : ""}`}
+        className={`non-selectable segment ${selected === "NFT name 2" ? "active" : ""}`}
         onClick={() => setSelected("NFT name 2")}
+        disabled
       >
         NFT name 2
       </button>

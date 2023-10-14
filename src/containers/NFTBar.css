@@ -25,3 +25,21 @@
     color: #0AE194;
     border-bottom: 1px solid #0AE194;
 }
+
+.non-selectable {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.segment:disabled {
+    background-color: #1E1E20;
+    cursor: not-allowed;
+    color: #F8F7F2;
+}
+
+.segment.active:disabled {
+    background-color: #1E1E20;
+    color: #F8F7F2;
+}
