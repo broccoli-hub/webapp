@@ -16,7 +16,6 @@ export const fetchDataAndGenerateVariations = async () => {
         ENDPOINT_DATA_TMP.entities.push(dataToAdd);
       }
 
-    //   const generatedData = generateDataVariations(apiData);
       return ENDPOINT_DATA_TMP;
     } catch (error) {
       console.error("Error fetching the API:", error);
